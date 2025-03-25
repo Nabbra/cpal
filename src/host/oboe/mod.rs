@@ -235,6 +235,7 @@ where
 {
     let builder = configure_for_device(builder, device, config);
     let stream = builder
+        .set_performance_mode(oboe::PerformanceMode::LowLatency)
         .set_callback(CpalInputCallback::<T, C>::new(
             data_callback,
             error_callback,
@@ -259,6 +260,7 @@ where
 {
     let builder = configure_for_device(builder, device, config);
     let stream = builder
+        .set_performance_mode(oboe::PerformanceMode::LowLatency)
         .set_callback(CpalOutputCallback::<T, C>::new(
             data_callback,
             error_callback,
