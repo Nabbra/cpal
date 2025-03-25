@@ -235,7 +235,6 @@ where
 {
     let builder = configure_for_device(builder, device, config);
     let stream = builder
-        .set_performance_mode(oboe::PerformanceMode::LowLatency)
         .set_callback(CpalInputCallback::<T, C>::new(
             data_callback,
             error_callback,
@@ -260,7 +259,6 @@ where
 {
     let builder = configure_for_device(builder, device, config);
     let stream = builder
-        .set_performance_mode(oboe::PerformanceMode::LowLatency)
         .set_callback(CpalOutputCallback::<T, C>::new(
             data_callback,
             error_callback,
@@ -413,6 +411,7 @@ impl DeviceTrait for Device {
             SampleFormat::I16 => {
                 let builder = oboe::AudioStreamBuilder::default()
                     .set_output()
+                    .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_format::<i16>();
                 if config.channels == 1 {
                     build_output_stream(
@@ -440,6 +439,7 @@ impl DeviceTrait for Device {
             SampleFormat::F32 => {
                 let builder = oboe::AudioStreamBuilder::default()
                     .set_output()
+                    .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_format::<f32>();
                 if config.channels == 1 {
                     build_output_stream(
