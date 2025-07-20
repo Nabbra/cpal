@@ -420,7 +420,8 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_sample_rate_conversion_quality(oboe::SampleRateConversionQuality::Fastest)
-                    .set_input_preset(oboe::InputPreset::VoiceCommunication)
+                    .set_usage(oboe::Usage::VoiceCommunication)
+                    // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<i16>();
                 if config.channels == 1 {
                     build_output_stream(
@@ -451,7 +452,8 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_sample_rate_conversion_quality(oboe::SampleRateConversionQuality::Fastest)
-                    .set_input_preset(oboe::InputPreset::VoiceCommunication)
+                    .set_usage(oboe::Usage::VoiceCommunication)
+                    // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<f32>();
                 if config.channels == 1 {
                     build_output_stream(
