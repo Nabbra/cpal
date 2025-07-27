@@ -384,6 +384,7 @@ macro_rules! impl_platform_host {
                 data_callback: D,
                 error_callback: E,
                 timeout: Option<std::time::Duration>,
+                device_id: Option<i32>,
             ) -> Result<Self::Stream, crate::BuildStreamError>
             where
                 D: FnMut(&crate::Data, &crate::InputCallbackInfo) + Send + 'static,
@@ -399,6 +400,7 @@ macro_rules! impl_platform_host {
                                 data_callback,
                                 error_callback,
                                 timeout,
+                                device_id
                             )
                             .map(StreamInner::$HostVariant)
                             .map(Stream::from),
@@ -413,6 +415,7 @@ macro_rules! impl_platform_host {
                 data_callback: D,
                 error_callback: E,
                 timeout: Option<std::time::Duration>,
+                device_id: Option<i32>,
             ) -> Result<Self::Stream, crate::BuildStreamError>
             where
                 D: FnMut(&mut crate::Data, &crate::OutputCallbackInfo) + Send + 'static,
@@ -428,6 +431,7 @@ macro_rules! impl_platform_host {
                                 data_callback,
                                 error_callback,
                                 timeout,
+                                device_id
                             )
                             .map(StreamInner::$HostVariant)
                             .map(Stream::from),
