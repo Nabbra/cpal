@@ -341,7 +341,7 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_input_preset(oboe::InputPreset::VoicePerformance)
-                    .set_channel_conversion_allowed(false)
+                    // .set_channel_conversion_allowed(false)
                     .set_format::<i16>();
                 if device_id.is_some() {
                     builder = builder.set_device_id(device_id.unwrap());
@@ -375,7 +375,7 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_input_preset(oboe::InputPreset::VoicePerformance)
-                    .set_channel_conversion_allowed(false)
+                    // .set_channel_conversion_allowed(false)
                     .set_format::<f32>();
                 if device_id.is_some() {
                     builder = builder.set_device_id(device_id.unwrap());
@@ -430,7 +430,7 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_sample_rate_conversion_quality(oboe::SampleRateConversionQuality::Low)
-                    .set_channel_conversion_allowed(false)
+                    // .set_channel_conversion_allowed(false)
                     // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<i16>();
                 if device_id.is_some() {
@@ -465,7 +465,7 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_sample_rate_conversion_quality(oboe::SampleRateConversionQuality::Low)
-                    .set_channel_conversion_allowed(false)
+                    // .set_channel_conversion_allowed(false)
                     // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<f32>();
                 if device_id.is_some() {
