@@ -328,6 +328,7 @@ impl DeviceTrait for Device {
         data_callback: D,
         error_callback: E,
         _timeout: Option<Duration>,
+        device_id: Option<i32>,
     ) -> Result<Self::Stream, BuildStreamError>
     where
         D: FnMut(&Data, &InputCallbackInfo) + Send + 'static,
@@ -340,7 +341,11 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_input_preset(oboe::InputPreset::VoicePerformance)
+                    .set_channel_conversion_allowed(false)
                     .set_format::<i16>();
+                if device_id.is_some() {
+                    builder.set_device_id(device_id.unwrap());
+                }
                 if config.channels == 1 {
                     build_input_stream(
                         self,
@@ -370,7 +375,11 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_input_preset(oboe::InputPreset::VoicePerformance)
+                    .set_channel_conversion_allowed(false)
                     .set_format::<f32>();
+                if device_id.is_some() {
+                    builder.set_device_id(device_id.unwrap());
+                }
                 if config.channels == 1 {
                     build_input_stream(
                         self,
@@ -408,6 +417,7 @@ impl DeviceTrait for Device {
         data_callback: D,
         error_callback: E,
         _timeout: Option<Duration>,
+        device_id: Option<i32>,
     ) -> Result<Self::Stream, BuildStreamError>
     where
         D: FnMut(&mut Data, &OutputCallbackInfo) + Send + 'static,
@@ -420,8 +430,12 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_sample_rate_conversion_quality(oboe::SampleRateConversionQuality::Low)
+                    .set_channel_conversion_allowed(false)
                     // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<i16>();
+                if device_id.is_some() {
+                    builder.set_device_id(device_id.unwrap());
+                }
                 if config.channels == 1 {
                     build_output_stream(
                         self,
@@ -451,8 +465,12 @@ impl DeviceTrait for Device {
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
                     .set_sample_rate_conversion_quality(oboe::SampleRateConversionQuality::Low)
+                    .set_channel_conversion_allowed(false)
                     // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<f32>();
+                if device_id.is_some() {
+                    builder.set_device_id(device_id.unwrap());
+                }
                 if config.channels == 1 {
                     build_output_stream(
                         self,
