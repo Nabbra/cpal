@@ -207,11 +207,12 @@ fn configure_for_device<D, C, I>(
     device: &Device,
     config: &StreamConfig,
 ) -> oboe::AudioStreamBuilder<D, C, I> {
-    let mut builder = if let Some(info) = &device.0 {
-        builder.set_device_id(info.id)
-    } else {
-        builder
-    };
+    // let mut builder = if let Some(info) = &device.0 {
+    //     builder.set_device_id(info.id)
+    // } else {
+    //     builder
+    // };
+    let mut builder = builder;
     builder = builder.set_sample_rate(config.sample_rate.0.try_into().unwrap());
     match &config.buffer_size {
         BufferSize::Default => builder,
