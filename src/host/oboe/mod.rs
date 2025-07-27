@@ -346,6 +346,8 @@ impl DeviceTrait for Device {
                     .set_format::<i16>();
                 if device_id.is_some() {
                     builder = builder.set_device_id(device_id.unwrap());
+                } else if let Some(info) = &self.0 {
+                    builder = builder.set_device_id(info.id)
                 }
                 if config.channels == 1 {
                     build_input_stream(
@@ -380,6 +382,8 @@ impl DeviceTrait for Device {
                     .set_format::<f32>();
                 if device_id.is_some() {
                     builder = builder.set_device_id(device_id.unwrap());
+                } else if let Some(info) = &self.0 {
+                    builder = builder.set_device_id(info.id)
                 }
                 if config.channels == 1 {
                     build_input_stream(
@@ -436,6 +440,8 @@ impl DeviceTrait for Device {
                     .set_format::<i16>();
                 if device_id.is_some() {
                     builder = builder.set_device_id(device_id.unwrap());
+                } else if let Some(info) = &self.0 {
+                    builder = builder.set_device_id(info.id)
                 }
                 if config.channels == 1 {
                     build_output_stream(
@@ -471,6 +477,8 @@ impl DeviceTrait for Device {
                     .set_format::<f32>();
                 if device_id.is_some() {
                     builder = builder.set_device_id(device_id.unwrap());
+                } else if let Some(info) = &self.0 {
+                    builder = builder.set_device_id(info.id)
                 }
                 if config.channels == 1 {
                     build_output_stream(
