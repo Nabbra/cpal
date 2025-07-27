@@ -336,7 +336,7 @@ impl DeviceTrait for Device {
     {
         match sample_format {
             SampleFormat::I16 => {
-                let builder = oboe::AudioStreamBuilder::default()
+                let mut builder = oboe::AudioStreamBuilder::default()
                     .set_input()
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
@@ -344,7 +344,7 @@ impl DeviceTrait for Device {
                     .set_channel_conversion_allowed(false)
                     .set_format::<i16>();
                 if device_id.is_some() {
-                    builder.set_device_id(device_id.unwrap());
+                    builder = builder.set_device_id(device_id.unwrap());
                 }
                 if config.channels == 1 {
                     build_input_stream(
@@ -370,7 +370,7 @@ impl DeviceTrait for Device {
                 }
             }
             SampleFormat::F32 => {
-                let builder = oboe::AudioStreamBuilder::default()
+                let mut builder = oboe::AudioStreamBuilder::default()
                     .set_input()
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
@@ -378,7 +378,7 @@ impl DeviceTrait for Device {
                     .set_channel_conversion_allowed(false)
                     .set_format::<f32>();
                 if device_id.is_some() {
-                    builder.set_device_id(device_id.unwrap());
+                    builder = builder.set_device_id(device_id.unwrap());
                 }
                 if config.channels == 1 {
                     build_input_stream(
@@ -425,7 +425,7 @@ impl DeviceTrait for Device {
     {
         match sample_format {
             SampleFormat::I16 => {
-                let builder = oboe::AudioStreamBuilder::default()
+                let mut builder = oboe::AudioStreamBuilder::default()
                     .set_output()
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
@@ -434,7 +434,7 @@ impl DeviceTrait for Device {
                     // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<i16>();
                 if device_id.is_some() {
-                    builder.set_device_id(device_id.unwrap());
+                    builder = builder.set_device_id(device_id.unwrap());
                 }
                 if config.channels == 1 {
                     build_output_stream(
@@ -460,7 +460,7 @@ impl DeviceTrait for Device {
                 }
             }
             SampleFormat::F32 => {
-                let builder = oboe::AudioStreamBuilder::default()
+                let mut builder = oboe::AudioStreamBuilder::default()
                     .set_output()
                     .set_performance_mode(oboe::PerformanceMode::LowLatency)
                     .set_sharing_mode(oboe::SharingMode::Exclusive)
@@ -469,7 +469,7 @@ impl DeviceTrait for Device {
                     // .set_input_preset(oboe::InputPreset::VoiceCommunication)
                     .set_format::<f32>();
                 if device_id.is_some() {
-                    builder.set_device_id(device_id.unwrap());
+                    builder = builder.set_device_id(device_id.unwrap());
                 }
                 if config.channels == 1 {
                     build_output_stream(
