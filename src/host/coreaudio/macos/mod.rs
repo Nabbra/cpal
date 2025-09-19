@@ -116,7 +116,7 @@ impl DeviceTrait for Device {
         data_callback: D,
         error_callback: E,
         timeout: Option<Duration>,
-        _device_id: Option<i32>,
+        device_id: Option<i32>,
     ) -> Result<Self::Stream, BuildStreamError>
     where
         D: FnMut(&Data, &InputCallbackInfo) + Send + 'static,
@@ -129,6 +129,7 @@ impl DeviceTrait for Device {
             data_callback,
             error_callback,
             timeout,
+            device_id,
         )
     }
 
@@ -139,7 +140,7 @@ impl DeviceTrait for Device {
         data_callback: D,
         error_callback: E,
         timeout: Option<Duration>,
-        _device_id: Option<i32>,
+        device_id: Option<i32>,
     ) -> Result<Self::Stream, BuildStreamError>
     where
         D: FnMut(&mut Data, &OutputCallbackInfo) + Send + 'static,
@@ -152,6 +153,7 @@ impl DeviceTrait for Device {
             data_callback,
             error_callback,
             timeout,
+            device_id
         )
     }
 }
@@ -571,6 +573,7 @@ impl Device {
         mut data_callback: D,
         error_callback: E,
         _timeout: Option<Duration>,
+        _device_id: Option<i32>,
     ) -> Result<Stream, BuildStreamError>
     where
         D: FnMut(&Data, &InputCallbackInfo) + Send + 'static,
@@ -681,6 +684,7 @@ impl Device {
         mut data_callback: D,
         error_callback: E,
         _timeout: Option<Duration>,
+        _device_id: Option<i32>,
     ) -> Result<Stream, BuildStreamError>
     where
         D: FnMut(&mut Data, &OutputCallbackInfo) + Send + 'static,
