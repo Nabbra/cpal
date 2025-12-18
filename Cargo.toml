@@ -50,9 +50,9 @@ jack = { version = "0.13.0", optional = true }
 
 [target.'cfg(target_vendor = "apple")'.dependencies]
 mach2 = "0.5"
-coreaudio-rs = { version = "0.11", default-features = false, features = [
+coreaudio-rs = { version = "0.13.0", default-features = false, features = [
     "core_audio",
-    "audio_unit",
+    "audio_toolbox",
 ] }
 objc2-core-audio = { version = "0.3.1", default-features = false, features = [
     "std",
