@@ -53,7 +53,6 @@ fn asbd_from_config(
         SampleFormat::F32 | SampleFormat::F64 => kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked,
         SampleFormat::I8
         | SampleFormat::I16
-        | SampleFormat::I24
         | SampleFormat::I32
         | SampleFormat::I64 => kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked,
         _ => kAudioFormatFlagIsPacked,
